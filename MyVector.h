@@ -53,8 +53,8 @@ void MyVector<T>::push_back(const T& element) {
     }
         arr[size] = element;
         ++size;
-    cout << "just added " << element << endl;
 }
+
 // checks to see if the size < capacity
 // if not resize()
 // do memory addition so that each index in the array points to the next allocated block in memory
@@ -80,8 +80,9 @@ void MyVector<T>::push_front(const T& element) {
 
 template <typename T>
 void MyVector<T>::print_vector() {
+    cout << "My vector: ";
     for (int i = 0; i != size; ++i) {
-        cout << arr[i] << endl;
+        cout << arr[i] << " ";
     }
 }
 

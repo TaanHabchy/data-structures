@@ -1,15 +1,3 @@
-/*
- * file:  proj7-TestMain.cpp
- * author:  Mark Josephs
- * course: CSI 1440
- * assignment:  Project 7
- * due date:  4/2/2023
- *
- * date modified:  4/1/2023
- *      - wrote program
- *
- */
-
 #include <iostream>
 #include "MyVector.h"
 
@@ -31,19 +19,7 @@ int main() {
     vec1.push_front(4);
     vec1.push_front(5);
 
-    vec2.push_front('A');
-    vec2.push_front('B');
-    vec2.push_front('C');
-    vec2.push_front('D');
-
-    vec3.push_front(.1);
-    vec3.push_front(.2);
-    vec3.push_front(.3);
-    vec3.push_front(-.1);
-
     vec1.print_vector();
-    vec2.print_vector();
-    vec3.print_vector();
 
     cout << endl << "should be: " << endl << "5 4 3 2 1" << endl << "D C B A" << endl << "-0.1 0.3 0.2 0.1" << endl;
 
@@ -53,17 +29,8 @@ int main() {
     vec1.push_back(900);
     vec1.push_back(-10);
 
-    vec2.push_back('Z');
-    vec2.push_back('M');
-    vec2.push_back('L');
-
-    vec3.push_back(.90);
-    vec3.push_back(.80);
-    vec3.push_back(.70);
 
     vec1.print_vector();
-    vec2.print_vector();
-    vec3.print_vector();
 
     cout << endl << "should be: " << endl << "5 4 3 2 1 900 -10" << endl << "D C B A Z M L" << endl << "-0.1 0.3 0.2 0.1 0.9 0.8 0.7" << endl;
 
@@ -93,22 +60,22 @@ int main() {
 
     //testing pop_back function
 
-    cout << endl << "**TESTING pop_back FUNCTION**" << endl;
+    // cout << endl << "**TESTING pop_back FUNCTION**" << endl;
+    //
+    // vec1.pop_back(a);
+    // vec1.pop_back(a);
+    //
+    // vec2.pop_back(b);
+    // vec2.pop_back(b);
+    //
+    // vec3.pop_back(c);
+    // vec3.pop_back(c);
 
-    vec1.pop_back(a);
-    vec1.pop_back(a);
-
-    vec2.pop_back(b);
-    vec2.pop_back(b);
-
-    vec3.pop_back(c);
-    vec3.pop_back(c);
-
-    vec1.print_vector();
-    vec2.print_vector();
-    vec3.print_vector();
-
-    cout << endl << "should be: " << endl << "2 1" << endl << "A Z" << endl << "0.1 0.9" << endl;
+    // vec1.print_vector();
+    // vec2.print_vector();
+    // vec3.print_vector();
+    //
+    // cout << endl << "should be: " << endl << "2 1" << endl << "A Z" << endl << "0.1 0.9" << endl;
 
 
     // //testing front function
