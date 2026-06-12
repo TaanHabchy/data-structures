@@ -1,99 +1,52 @@
+#include <cassert>
 #include <iostream>
+#include <vector>
 #include "MyVector.h"
 
-using namespace std;
-
-
 int main() {
+    MyVector<int> v;
 
-    MyVector<int> vec1;
-    vector<int> realVec;
+    assert(v.isEmpty());
+    assert(v.getSize() == 0);
 
-    //testing push_front Function
-    cout << "**TESTING push_front FUNCTION**" << endl;
+    v.push_back(10);
+    v.push_back(20);
+    v.push_front(5);
 
-    vec1.push_front(1);
-    vec1.push_front(2);
-    vec1.push_front(3);
-    vec1.push_front(4);
-    vec1.push_front(5);
+    assert(v.getSize() == 3);
+    assert(v[0] == 5);
+    assert(v[1] == 10);
+    assert(v[2] == 20);
+    assert(v.front() == 5);
+    assert(v.back() == 20);
 
-    vec1.print_vector();
+    v.pop_front();
+    assert(v[0] == 10);
+    assert(v.getSize() == 2);
 
-    cout << endl << "should be: " << "5 4 3 2 1" << endl;
+    v.pop_back();
+    assert(v.back() == 10);
+    assert(v.getSize() == 1);
 
-    //testing push_back function
-    cout << endl << "**TESTING push_back FUNCTION**" << endl;
+    v.erase();
+    assert(v.isEmpty());
+    assert(v.getSize() == 0);
 
-    vec1.push_back(900);
-    vec1.push_back(-10);
-
-
-    vec1.print_vector();
-
-    cout << endl << "should be: " << "5 4 3 2 1 900 -10" << endl;
-
-    // //testing pop_front function
-    cout << endl << "**TESTING POPFRONT FUNCTION**" << endl;
-    vec1.pop_front();
-    vec1.pop_front();
-    vec1.pop_front();
-    
-    vec1.print_vector();
-    
-    cout << endl << "should be: " << "2 1 900 -10" << endl;
-
-
-    //testing pop_back function
-
-    cout << endl << "**TESTING pop_back FUNCTION**" << endl;
-
-    vec1.pop_back();
-    vec1.pop_back();
-    //
-    vec1.print_vector();
-    //
-    cout << endl << "should be: "  << "2 1" << endl;
-
-
-    //testing front function
-    cout << endl << "**TESTING FRONT FUNCTION**" << endl;
-
-    cout << "front of vec1: " << vec1.front() << endl;
-    cout << "should be: 2" << endl << endl;
-
-
-    //testing back function
-    cout << endl << "**TESTING BACK FUNCTION**" << endl;
-
-    cout << "back of vec1: " << vec1.back() << endl;
-    cout << "should be: 1" << endl << endl;
-
-    // //testing overloaded [] function
-    cout << endl << "**TESTING OVERLOADED [] FUNCTION**" << endl;
-    //
-    cout << vec1[0] << endl;
-    cout << "should be: 2" << endl << endl;
-
-    //testing getSize function
-    cout << endl << "**TESTING GETSIZE FUNCTION**" << endl;
-
-    cout << vec1.getSize() << endl;
-    cout << "should be: 2" << endl << endl;
-
-    //testing erase function
-    cout << endl << "**TESTING ERASE FUNCTION**" << endl;
-
-    vec1.erase();
-    if(vec1.getSize() == 0){
-        cout << "vec1 erased" << endl;
+    // resizing past capacity
+    for (int i = 0; i < 100; i++) {
+        v.push_back(i);
     }
+    assert(v.getSize() == 100);
+    assert(v[0] == 0);
+    assert(v[99] == 99);
 
-    //testing isEmpty function
-    cout << endl << "**TESTING ISEMPTY FUNCTION**" << endl;
+    // modifying through []
+    v[0] = 999;
+    assert(v[0] == 999);
 
-    cout << vec1.isEmpty() << endl;
-    cout << "should be: 1 (true)" << endl;
+    // copy constructor / assignment operator
+    MyVector<int> copy = v;
+    assert(copy[0] == v[0]);
 
-    return 0;
+    std::cout << "All tests passed!" << std::endl;
 }

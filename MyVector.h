@@ -94,6 +94,7 @@ void MyVector<T>::pop_back() {
 // Resize Function
 template <typename T>
 void MyVector<T>::resize() {
+    if (capacity == 0) ++capacity;
     capacity *= 2;
     T* tempArr = new T[capacity];
     for (int i = 0; i < size; ++i) {
@@ -151,7 +152,7 @@ bool MyVector<T>::isEmpty() {
 
 template <typename T>
 T& MyVector<T>::operator[](const T& element) {
-    return arr[0];
+    return arr[element];
 }
 
 
