@@ -1,8 +1,5 @@
 
-#ifndef VECTOR_SINGLYLINKEDLIST_H
-#define VECTOR_SINGLYLINKEDLIST_H
 using namespace std;
-
 
 template <typename T>
 class Node {
@@ -46,50 +43,55 @@ class MyList {
 
 template<typename T>
 MyList<T>::MyList(){
-    head = nullptr;
+    head = new Node<T>(NULL);
 }
 
 template <typename T>
 bool MyList<T> :: isEmpty() {
-    if (head == nullptr) return true;
+    if (head->next == nullptr) return true;
     return false;
 }
 
 template<typename T>
 int MyList<T>::getSize() {
     int rv = 0;
-    if (head == nullptr) return rv;
+    if (head->next == nullptr) return rv;
     Node<T>* temp = head;
-    while (temp != nullptr) {
+    while (temp->next != nullptr) {
         ++rv;
         temp = temp->next;
     }
+    return rv;
+
 }
 
-// template<typename T>
-// void MyList<T>::push_back(T new_data) {
-//
-//     Node<T>* temp = head;
-//
-//     while (temp != nullptr) {
-//         temp = temp->next;
-//     }
-//
-//     temp->next = new Node<T>(new_data);
-// }
-//
-// template<typename T>
-// void MyList<T>::push_front(T new_data) {
-//     MyList<int> new_list;
-//     new_list.push_back(new_data);
-//
-//     Node<T>* temp = head + 1;
-//
-//     while (temp != nullptr) {
-//         new_list.push_back(temp->data);
-//         temp = temp->next;
-//     }
-//
-// }
+template<typename T>
+void MyList<T>::push_back(T new_data) {
 
-#endif //VECTOR_SINGLYLINKEDLIST_H
+    if (head->next == nullptr) {
+         head->next = new Node<T>(new_data);
+        return;
+    }
+
+    Node<T>* temp = head->next;
+    while (temp->next != nullptr) {
+        temp = temp->next;
+    }
+
+    temp->next = new Node<T>(new_data);
+}
+
+template<typename T>
+void MyList<T>::push_front(T new_data) {
+    MyList<int> new_list;
+    new_list.push_back(new_data);
+
+    Node<T>* temp = head->next;
+
+    while (temp != nullptr) {
+        new_list.push_back(temp->data);
+        temp = temp->next;
+    }
+     head->next = new_list.head->next;
+}
+

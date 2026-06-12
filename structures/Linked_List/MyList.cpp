@@ -8,11 +8,11 @@ int main() {
     assert(li.isEmpty());
     assert(li.getSize() == 0);
 
-    // li.push_back(10);
-    // li.push_back(20);
-    // li.push_front(5);
+    li.push_back(10);
+    li.push_back(20);
+    li.push_front(5);
     //
-    // assert(li.getSize() == 3);
+    assert(li.getSize() == 3);
     // assert(li[0] == 5);
     // assert(li[1] == 10);
     // assert(li[2] == 20);
