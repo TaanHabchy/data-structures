@@ -19,8 +19,6 @@ class MyList {
         int size;
         Node<T>* head;
 
-
-
     public:
 
         MyList();
@@ -93,5 +91,55 @@ void MyList<T>::push_front(T new_data) {
         temp = temp->next;
     }
      head->next = new_list.head->next;
+}
+
+template<typename T>
+T &MyList<T>::operator[](const T &index) {
+    Node<T>* temp = head->next;
+    for (int i = 0; i<index; i++) {
+        temp = temp->next;
+    }
+    return temp->data;
+}
+
+template <typename T>
+int MyList<T>::front() {
+    return head->next->data;
+}
+
+template <typename T>
+int MyList<T>::back() {
+
+    Node<T>* temp = head->next;
+    while (temp->next != nullptr) {
+        temp = temp->next;
+    }
+
+    return temp->data;
+}
+
+template <typename T>
+void MyList<T>::pop_front() {
+    MyList<int> new_list;
+    Node<T>* temp = head->next;
+
+    while (temp->next != nullptr) {
+        new_list.push_back(temp->next->data);
+        temp = temp->next;
+    }
+    head->next = new_list.head->next;
+}
+
+template<typename T>
+void MyList<T>::pop_back() {
+    Node<T>*  previous = head;
+    Node<T>* current = head->next;
+    while (current->next != nullptr) {
+        current = current->next;
+        previous = previous->next;
+    }
+
+    delete current;
+    previous->next = nullptr;
 }
 

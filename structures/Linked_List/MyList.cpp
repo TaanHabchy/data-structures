@@ -13,22 +13,22 @@ int main() {
     li.push_front(5);
     //
     assert(li.getSize() == 3);
-    // assert(li[0] == 5);
-    // assert(li[1] == 10);
-    // assert(li[2] == 20);
-    // assert(li.front() == 5);
-    // assert(li.back() == 20);
+    assert(li[0] == 5);
+    assert(li[1] == 10);
+    assert(li[2] == 20);
+    assert(li.front() == 5);
+    assert(li.back() == 20);
     //
-    // li.pop_front();
-    // assert(li[0] == 10);
-    // assert(li[1] == 20);
-    // assert(li.getSize() == 2);
-    // assert(li.front() == 10);
+    li.pop_front();
+    assert(li[0] == 10);
+    assert(li[1] == 20);
+    assert(li.getSize() == 2);
+    assert(li.front() == 10);
     //
-    // li.pop_back();
-    // assert(li.back() == 10);
-    // assert(li.front() == 10);
-    // assert(li.getSize() == 1);
+    li.pop_back();
+    assert(li.back() == 10);
+    assert(li.front() == 10);
+    assert(li.getSize() == 1);
     //
     // li.erase();
     // assert(li.isEmpty());
